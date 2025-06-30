@@ -106,12 +106,12 @@ public class CopperBottleCap extends Item implements PokemonSelectingItem {
     }
 
     @Override
-    public boolean canUseOnPokemon(@NotNull Pokemon pokemon) {
+    public boolean canUseOnPokemon(@NotNull ItemStack itemStack, @NotNull Pokemon pokemon) {
         return true;
     }
 
     @Override
-    public boolean canUseOnBattlePokemon(@NotNull BattlePokemon battlePokemon) {
+    public boolean canUseOnBattlePokemon(@NotNull ItemStack itemStack, @NotNull BattlePokemon battlePokemon) {
         return false;
     }
 
