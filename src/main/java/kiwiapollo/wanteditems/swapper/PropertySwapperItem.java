@@ -6,7 +6,8 @@ import net.minecraft.util.Identifier;
 
 public enum PropertySwapperItem {
     GENDER_SWAPPER("gender_swapper", new GenderSwapper()),
-    SHINY_SWAPPER("shiny_swapper", new ShinySwapper());
+    SHINY_SWAPPER("shiny_swapper", new ShinySwapper()),
+    CAUGHT_BALL_SWAPPER("caught_ball_swapper", new CaughtBallSwapper());
 
     private final Identifier identifier;
     private final Item item;
