@@ -28,7 +28,8 @@ public class MoveActivator extends Item implements PokemonAndMoveSelectingItem {
             Map.entry("sunnyday", new SunnyDayEffect()),
             Map.entry("thunder", new ThunderEffect()),
             Map.entry("toxic", new ToxicEffect()),
-            Map.entry("smokescreen", new SmokeScreenEffect())
+            Map.entry("smokescreen", new SmokeScreenEffect()),
+            Map.entry("agility", new AgilityEffect())
     );
 
     public MoveActivator() {

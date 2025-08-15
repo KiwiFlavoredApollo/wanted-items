@@ -10,7 +10,7 @@ import java.util.function.BiConsumer;
 public class NullEffect implements BiConsumer<ServerPlayerEntity, Move> {
     @Override
     public void accept(ServerPlayerEntity player, Move move) {
-        player.sendMessage(Text.translatable("item.miraclemove.move_has_no_effect").formatted(Formatting.RED));
+        player.sendMessage(Text.translatable("item.wanteditems.move_has_no_effect").formatted(Formatting.RED));
         throw new IllegalStateException();
     }
 }

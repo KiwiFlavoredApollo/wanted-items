@@ -17,7 +17,7 @@ public class SmokeScreenEffect implements BiConsumer<ServerPlayerEntity, Move> {
             ServerWorld world = player.getServerWorld();
             PlayerEntity target = world.getClosestPlayer(player.getX(), player.getY(), player.getZ(), 10.0, true);
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 220,1, false, true, true));
-            target.sendMessage(Text.translatable("item.miraclemove.player_blinded_target", player.getGameProfile().getName(), target.getGameProfile().getName()));
+            target.sendMessage(Text.translatable("item.wanteditems.player_blinded_target", player.getGameProfile().getName(), target.getGameProfile().getName()));
             move.setCurrentPp(move.getCurrentPp() - 1);
 
         } catch (NullPointerException ignored) {

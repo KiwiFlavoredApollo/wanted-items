@@ -10,14 +10,14 @@ import net.minecraft.text.Text;
 
 import java.util.function.BiConsumer;
 
-public class ToxicEffect implements BiConsumer<ServerPlayerEntity, Move> {
+public class AgilityEffect implements BiConsumer<ServerPlayerEntity, Move> {
     @Override
     public void accept(ServerPlayerEntity player, Move move) {
         try {
             ServerWorld world = player.getServerWorld();
             PlayerEntity target = world.getClosestPlayer(player.getX(), player.getY(), player.getZ(), 10.0, true);
-            target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 220,1, false, true, true));
-            target.sendMessage(Text.translatable("item.wanteditems.player_poisoned_target", player.getGameProfile().getName(), target.getGameProfile().getName()));
+            target.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 220,1, false, true, true));
+            target.sendMessage(Text.translatable("item.wanteditems.player_hastened_target", player.getGameProfile().getName(), target.getGameProfile().getName()));
             move.setCurrentPp(move.getCurrentPp() - 1);
 
         } catch (NullPointerException ignored) {
