@@ -5,7 +5,8 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
 public enum MiscItem {
-    DITTO_RESIDUE("ditto_residue", new DittoResidue());
+    DITTO_RESIDUE("ditto_residue", new DittoResidue()),
+    MOVE_ACTIVATOR("move_activator", new MoveActivator());
 
     private final Identifier identifier;
     private final Item item;

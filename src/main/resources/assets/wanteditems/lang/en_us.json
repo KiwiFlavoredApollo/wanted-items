@@ -3,6 +3,7 @@
 
   "item.wanteditems.gender_swapper": "Gender Swapper",
   "item.wanteditems.shiny_swapper": "Shiny Swapper",
+  "item.wanteditems.caught_ball_swapper": "Caught Ball Swapper",
 
   "item.wanteditems.ev_randomizer": "EV Randomizer",
   "item.wanteditems.iv_randomizer": "IV Randomizer",
@@ -32,8 +33,13 @@
   "item.wanteditems.copper_bottle_cap": "Copper Bottle Cap",
 
   "item.wanteditems.ditto_residue": "Ditto Residue",
+  "item.wanteditems.move_activator": "Move Activator",
 
   "item.wanteditems.error.has_maximum_stats": "%s already has the maximum stats.",
   "item.wanteditems.error.has_zero_stats": "%s already has zero stats.",
-  "item.wanteditems.error.is_genderless": "%s is genderless."
+  "item.wanteditems.error.is_genderless": "%s is genderless.",
+  "item.wanteditems.not_enough_pp": "Not enough PP",
+  "item.wanteditems.move_has_no_effect": "This move has no effect",
+  "item.wanteditems.player_poisoned_target": "%s poisoned %s.",
+  "item.wanteditems.player_blinded_target": "%s blinded %s."
 }
