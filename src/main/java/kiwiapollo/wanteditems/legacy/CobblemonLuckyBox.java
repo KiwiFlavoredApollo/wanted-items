@@ -1,7 +1,8 @@
-package kiwiapollo.wanteditems.luckybox;
+package kiwiapollo.wanteditems.legacy;
 
 import com.cobblemon.mod.common.CobblemonItems;
 import kiwiapollo.wanteditems.common.SimpleFactory;
+import kiwiapollo.wanteditems.luckybox.LuckyBox;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;

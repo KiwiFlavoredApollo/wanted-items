@@ -1,4 +1,4 @@
-package kiwiapollo.wanteditems.stateditor;
+package kiwiapollo.wanteditems.bottlecap;
 
 import com.cobblemon.mod.common.CobblemonSounds;
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
@@ -6,7 +6,6 @@ import com.cobblemon.mod.common.api.item.PokemonSelectingItem;
 import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
 import com.cobblemon.mod.common.item.battle.BagItem;
-import com.cobblemon.mod.common.pokemon.IVs;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -22,28 +21,14 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
-
-public class BottleCap extends Item implements PokemonSelectingItem {
-    private final Stats stats;
-
-    public BottleCap() {
-        this(null);
-    }
-
-    public BottleCap(Stats stats) {
+public class CopperBottleCap extends Item implements PokemonSelectingItem {
+    public CopperBottleCap() {
         super(new Item.Settings());
-
-        this.stats = stats;
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
-
-        if (stats == null) {
-            return TypedActionResult.pass(itemStack);
-        }
 
         if (world.isClient()) {
             return TypedActionResult.pass(itemStack);
@@ -64,13 +49,18 @@ public class BottleCap extends Item implements PokemonSelectingItem {
 
     @Override
     public @Nullable TypedActionResult<ItemStack> applyToPokemon(@NotNull ServerPlayerEntity player, @NotNull ItemStack itemStack, @NotNull Pokemon pokemon) {
-        if (Objects.equals(pokemon.getIvs().get(stats), IVs.MAX_VALUE)) {
+        if (isZeroEVs(pokemon)) {
             player.playSound(SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.PLAYERS, 1F, 1F);
-            player.sendMessage(Text.translatable("item.wanteditems.error.has_maximum_stats", pokemon.getSpecies().getTranslatedName()).formatted(Formatting.RED));
+            player.sendMessage(Text.translatable("item.wanteditems.error.has_zero_stats", pokemon.getSpecies().getTranslatedName()).formatted(Formatting.RED));
             return TypedActionResult.pass(itemStack);
         }
 
-        pokemon.setIV(stats, IVs.MAX_VALUE);
+        pokemon.setEV(Stats.ATTACK, 0);
+        pokemon.setEV(Stats.DEFENCE, 0);
+        pokemon.setEV(Stats.SPECIAL_ATTACK, 0);
+        pokemon.setEV(Stats.SPECIAL_DEFENCE, 0);
+        pokemon.setEV(Stats.HP, 0);
+        pokemon.setEV(Stats.SPEED, 0);
 
         if (!player.isCreative()) {
             itemStack.decrement(1);
@@ -78,6 +68,15 @@ public class BottleCap extends Item implements PokemonSelectingItem {
 
         player.playSound(CobblemonSounds.MEDICINE_PILLS_USE, SoundCategory.PLAYERS, 1F, 1F);
         return TypedActionResult.success(itemStack);
+    }
+
+    private boolean isZeroEVs(Pokemon pokemon) {
+        return pokemon.getEvs().get(Stats.ATTACK).equals(0)
+                && pokemon.getEvs().get(Stats.DEFENCE).equals(0)
+                && pokemon.getEvs().get(Stats.SPECIAL_ATTACK).equals(0)
+                && pokemon.getEvs().get(Stats.SPECIAL_DEFENCE).equals(0)
+                && pokemon.getEvs().get(Stats.HP).equals(0)
+                && pokemon.getEvs().get(Stats.SPEED).equals(0);
     }
 
     @Override

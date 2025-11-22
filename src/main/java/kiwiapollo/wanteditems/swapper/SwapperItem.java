@@ -4,7 +4,7 @@ import kiwiapollo.wanteditems.WantedItems;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
-public enum PropertySwapperItem {
+public enum SwapperItem {
     GENDER_SWAPPER("gender_swapper", new GenderSwapper()),
     SHINY_SWAPPER("shiny_swapper", new ShinySwapper()),
     CAUGHT_BALL_SWAPPER("caught_ball_swapper", new CaughtBallSwapper());
@@ -12,7 +12,7 @@ public enum PropertySwapperItem {
     private final Identifier identifier;
     private final Item item;
 
-    PropertySwapperItem(String path, Item item) {
+    SwapperItem(String path, Item item) {
         this.identifier = Identifier.of(WantedItems.MOD_ID, path);
         this.item = item;
     }

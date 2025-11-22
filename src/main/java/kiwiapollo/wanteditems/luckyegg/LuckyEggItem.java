@@ -5,10 +5,9 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
 public enum LuckyEggItem {
-    GOLD_LUCKY_EGG("gold_lucky_egg", new GoldLuckyEgg()),
-    SHINY_GOLD_LUCKY_EGG("shiny_gold_lucky_egg", new ShinyGoldLuckyEgg()),
-    SILVER_LUCKY_EGG("silver_lucky_egg", new SilverLuckyEgg()),
-    SHINY_SILVER_LUCKY_EGG("shiny_silver_lucky_egg", new ShinySilverLuckyEgg());
+    RED_LUCKY_EGG("red_lucky_egg", new RedLuckyEgg()),
+    GREEN_LUCKY_EGG("green_lucky_egg", new GreenLuckyEgg()),
+    BLUE_LUCKY_EGG("blue_lucky_egg", new BlueLuckyEgg());
 
     private final Identifier identifier;
     private final Item item;

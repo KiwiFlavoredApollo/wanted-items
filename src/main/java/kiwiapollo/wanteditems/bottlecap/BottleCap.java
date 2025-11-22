@@ -1,4 +1,4 @@
-package kiwiapollo.wanteditems.stateditor;
+package kiwiapollo.wanteditems.bottlecap;
 
 import com.cobblemon.mod.common.CobblemonSounds;
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
@@ -22,14 +22,28 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class GoldBottleCap extends Item implements PokemonSelectingItem {
-    public GoldBottleCap() {
+import java.util.Objects;
+
+public class BottleCap extends Item implements PokemonSelectingItem {
+    private final Stats stats;
+
+    public BottleCap() {
+        this(null);
+    }
+
+    public BottleCap(Stats stats) {
         super(new Item.Settings());
+
+        this.stats = stats;
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
+
+        if (stats == null) {
+            return TypedActionResult.pass(itemStack);
+        }
 
         if (world.isClient()) {
             return TypedActionResult.pass(itemStack);
@@ -50,18 +64,13 @@ public class GoldBottleCap extends Item implements PokemonSelectingItem {
 
     @Override
     public @Nullable TypedActionResult<ItemStack> applyToPokemon(@NotNull ServerPlayerEntity player, @NotNull ItemStack itemStack, @NotNull Pokemon pokemon) {
-        if (isPerfectIVs(pokemon)) {
+        if (Objects.equals(pokemon.getIvs().get(stats), IVs.MAX_VALUE)) {
             player.playSound(SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.PLAYERS, 1F, 1F);
             player.sendMessage(Text.translatable("item.wanteditems.error.has_maximum_stats", pokemon.getSpecies().getTranslatedName()).formatted(Formatting.RED));
             return TypedActionResult.pass(itemStack);
         }
 
-        pokemon.setIV(Stats.ATTACK, IVs.MAX_VALUE);
-        pokemon.setIV(Stats.DEFENCE, IVs.MAX_VALUE);
-        pokemon.setIV(Stats.SPECIAL_ATTACK, IVs.MAX_VALUE);
-        pokemon.setIV(Stats.SPECIAL_DEFENCE, IVs.MAX_VALUE);
-        pokemon.setIV(Stats.HP, IVs.MAX_VALUE);
-        pokemon.setIV(Stats.SPEED, IVs.MAX_VALUE);
+        pokemon.setIV(stats, IVs.MAX_VALUE);
 
         if (!player.isCreative()) {
             itemStack.decrement(1);
@@ -69,15 +78,6 @@ public class GoldBottleCap extends Item implements PokemonSelectingItem {
 
         player.playSound(CobblemonSounds.MEDICINE_PILLS_USE, SoundCategory.PLAYERS, 1F, 1F);
         return TypedActionResult.success(itemStack);
-    }
-
-    private boolean isPerfectIVs(Pokemon pokemon) {
-        return pokemon.getIvs().get(Stats.ATTACK).equals(IVs.MAX_VALUE)
-                && pokemon.getIvs().get(Stats.DEFENCE).equals(IVs.MAX_VALUE)
-                && pokemon.getIvs().get(Stats.SPECIAL_ATTACK).equals(IVs.MAX_VALUE)
-                && pokemon.getIvs().get(Stats.SPECIAL_DEFENCE).equals(IVs.MAX_VALUE)
-                && pokemon.getIvs().get(Stats.HP).equals(IVs.MAX_VALUE)
-                && pokemon.getIvs().get(Stats.SPEED).equals(IVs.MAX_VALUE);
     }
 
     @Override

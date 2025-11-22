@@ -1,18 +1,16 @@
 package kiwiapollo.wanteditems;
 
-import com.github.d0ctorleon.mythsandlegends.MythsAndLegends;
-import kiwiapollo.wanteditems.luckybox.CobblemonLuckyBoxItem;
-import kiwiapollo.wanteditems.luckybox.MythsAndLegendsLuckyBoxItem;
+import kiwiapollo.wanteditems.legacy.LegacyItem;
+import kiwiapollo.wanteditems.luckybox.LuckyBoxItem;
 import kiwiapollo.wanteditems.misc.MiscItem;
 import kiwiapollo.wanteditems.luckyegg.LuckyEggItem;
 import kiwiapollo.wanteditems.randomizer.RandomizerItem;
-import kiwiapollo.wanteditems.stateditor.StatEditorItem;
-import kiwiapollo.wanteditems.swapper.PropertySwapperItem;
+import kiwiapollo.wanteditems.bottlecap.BottleCapItem;
+import kiwiapollo.wanteditems.swapper.SwapperItem;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -39,10 +37,11 @@ public class WantedItems implements ModInitializer {
 
 		addLuckyBoxItems();
 		addLuckyEggItems();
-		addStatEditorItems();
-		addPropertySwapperItems();
+		addBottleCapItems();
+		addSwapperItems();
 		addRandomizerItems();
 		addMiscItems();
+		addLegacyItems();
 	}
 
 	private void addItemGroup() {
@@ -50,33 +49,16 @@ public class WantedItems implements ModInitializer {
 	}
 
 	private void addLuckyBoxItems() {
-		addMythsAndLegendsLuckyBoxItems();
 		addCobblemonLuckyBoxItems();
 	}
 
 	private void addCobblemonLuckyBoxItems() {
-		Arrays.stream(CobblemonLuckyBoxItem.values()).forEach(item -> {
+		Arrays.stream(LuckyBoxItem.values()).forEach(item -> {
 			Registry.register(Registries.ITEM, item.getIdentifier(), item.getItem());
 		});
 
 		ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_REGISTRY_KEY).register(group -> {
-			Arrays.stream(CobblemonLuckyBoxItem.values()).forEach(item -> {
-				group.add(item.getItem());
-			});
-		});
-	}
-
-	private void addMythsAndLegendsLuckyBoxItems() {
-		if (!FabricLoader.getInstance().isModLoaded(MythsAndLegends.MOD_ID)) {
-			return;
-		}
-
-		Arrays.stream(MythsAndLegendsLuckyBoxItem.values()).forEach(item -> {
-			Registry.register(Registries.ITEM, item.getIdentifier(), item.getItem());
-		});
-
-		ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_REGISTRY_KEY).register(group -> {
-			Arrays.stream(MythsAndLegendsLuckyBoxItem.values()).forEach(item -> {
+			Arrays.stream(LuckyBoxItem.values()).forEach(item -> {
 				group.add(item.getItem());
 			});
 		});
@@ -94,25 +76,25 @@ public class WantedItems implements ModInitializer {
 		});
 	}
 
-	private void addStatEditorItems() {
-		Arrays.stream(StatEditorItem.values()).forEach(item -> {
+	private void addBottleCapItems() {
+		Arrays.stream(BottleCapItem.values()).forEach(item -> {
 			Registry.register(Registries.ITEM, item.getIdentifier(), item.getItem());
 		});
 
 		ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_REGISTRY_KEY).register(group -> {
-			Arrays.stream(StatEditorItem.values()).forEach(item -> {
+			Arrays.stream(BottleCapItem.values()).forEach(item -> {
 				group.add(item.getItem());
 			});
 		});
 	}
 
-	private void addPropertySwapperItems() {
-		Arrays.stream(PropertySwapperItem.values()).forEach(item -> {
+	private void addSwapperItems() {
+		Arrays.stream(SwapperItem.values()).forEach(item -> {
 			Registry.register(Registries.ITEM, item.getIdentifier(), item.getItem());
 		});
 
 		ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_REGISTRY_KEY).register(group -> {
-			Arrays.stream(PropertySwapperItem.values()).forEach(item -> {
+			Arrays.stream(SwapperItem.values()).forEach(item -> {
 				group.add(item.getItem());
 			});
 		});
@@ -137,6 +119,18 @@ public class WantedItems implements ModInitializer {
 
 		ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_REGISTRY_KEY).register(group -> {
 			Arrays.stream(MiscItem.values()).forEach(item -> {
+				group.add(item.getItem());
+			});
+		});
+	}
+
+	private void addLegacyItems() {
+		Arrays.stream(LegacyItem.values()).forEach(item -> {
+			Registry.register(Registries.ITEM, item.getIdentifier(), item.getItem());
+		});
+
+		ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_REGISTRY_KEY).register(group -> {
+			Arrays.stream(LegacyItem.values()).forEach(item -> {
 				group.add(item.getItem());
 			});
 		});

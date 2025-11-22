@@ -1,11 +1,11 @@
-package kiwiapollo.wanteditems.stateditor;
+package kiwiapollo.wanteditems.bottlecap;
 
 import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import kiwiapollo.wanteditems.WantedItems;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
-public enum StatEditorItem {
+public enum BottleCapItem {
     BOTTLE_CAP("bottle_cap", new BottleCap()),
 
     BOTTLE_CAP_ATK("bottle_cap_atk", new BottleCap(Stats.ATTACK)),
@@ -21,7 +21,7 @@ public enum StatEditorItem {
     private final Identifier identifier;
     private final Item item;
 
-    StatEditorItem(String path, Item item) {
+    BottleCapItem(String path, Item item) {
         this.identifier = Identifier.of(WantedItems.MOD_ID, path);
         this.item = item;
     }
