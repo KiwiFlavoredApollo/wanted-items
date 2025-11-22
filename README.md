@@ -13,7 +13,7 @@ This is not unique work of mine and is motivated work of Cobblemizer and Umimple
 
 Myths and Legends Lucky Box item is removed due to complication of depending on closed source mod.
 
-Few items will be removed or changed in the future. Be sure to provide migration recipes for the users. Following items will be removed in 1.1.7
+Few items will be removed or changed in the future. Be sure to provide migration recipes for the users. Following items will be removed in 1.1.8
 
 ### To be Removed
 
@@ -52,7 +52,7 @@ Needs to be implemented
 Needs to be implemented
 
 <details>
-<summary>To be Changed in 1.1.7</summary>
+<summary>To be Changed in 1.1.8</summary>
 
 ### Gold Lucky Egg
 
@@ -90,7 +90,7 @@ Gives random Berry item.
 Gives random Exp. Candy item.
 
 <details>
-<summary>To be Removed in 1.1.7</summary>
+<summary>To be Removed in 1.1.8</summary>
 
 ### Cobblemon Lucky Box
 
