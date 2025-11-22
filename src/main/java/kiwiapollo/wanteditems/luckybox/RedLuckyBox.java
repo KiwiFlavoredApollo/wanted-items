@@ -1,17 +1,15 @@
 package kiwiapollo.wanteditems.luckybox;
 
-import kiwiapollo.wanteditems.common.SimpleFactory;
-import net.minecraft.item.Item;
-
 public class RedLuckyBox extends LuckyBox {
+    public static final ItemFactory FACTORY = new ItemFactory();
+
     public RedLuckyBox() {
-        super(new LuckyBarFactory());
+        super(FACTORY);
     }
 
-    private static class LuckyBarFactory implements SimpleFactory<Item> {
-        @Override
-        public Item create() {
-            return null;
+    public static class ItemFactory extends LuckyBox.ItemFactory {
+        public ItemFactory() {
+            super("red_lucky_box");
         }
     }
 }

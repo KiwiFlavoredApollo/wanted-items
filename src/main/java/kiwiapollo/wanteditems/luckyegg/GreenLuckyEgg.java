@@ -1,17 +1,15 @@
 package kiwiapollo.wanteditems.luckyegg;
 
-import com.cobblemon.mod.common.pokemon.Pokemon;
-import kiwiapollo.wanteditems.common.SimpleFactory;
-
 public class GreenLuckyEgg extends LuckyEgg {
+    public static final PokemonFactory FACTORY = new PokemonFactory();
+
     public GreenLuckyEgg() {
-        super(new Factory());
+        super(FACTORY);
     }
 
-    private static class Factory implements SimpleFactory<Pokemon> {
-        @Override
-        public Pokemon create() {
-            return null;
+    public static class PokemonFactory extends LuckyEgg.PokemonFactory {
+        public PokemonFactory() {
+            super("green_lucky_egg");
         }
     }
 }
