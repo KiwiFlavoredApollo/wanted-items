@@ -63,6 +63,7 @@ public class CaughtBallSwapper extends Item implements PokemonSelectingItem {
 
         if (!player.isCreative()) {
             itemStack.decrement(1);
+            pokemon.removeHeldItem();
         }
 
         player.playSound(CobblemonSounds.MEDICINE_PILLS_USE, SoundCategory.PLAYERS, 1F, 1F);
