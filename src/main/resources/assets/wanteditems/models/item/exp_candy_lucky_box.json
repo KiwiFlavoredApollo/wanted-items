@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "wanteditems:item/lucky_candy"
+    "layer0": "wanteditems:item/exp_candy_lucky_box"
   }
 }
