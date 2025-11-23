@@ -5,9 +5,9 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
 public enum LuckyBoxItem {
-    LUCKY_BALL("lucky_ball", new LuckyBall()),
-    LUCKY_BERRY("lucky_berry", new LuckyBerry()),
-    LUCKY_CANDY("lucky_candy", new LuckyCandy()),
+    POKE_BALL_LUCKY_BOX("poke_ball_lucky_box", new PokeBallLuckyBox()),
+    BERRY_LUCKY_BOX("berry_lucky_box", new BerryLuckyBox()),
+    EXP_CANDY_LUCKY_BOX("exp_candy_lucky_box", new ExpCandyLuckyBox()),
 
     RED_LUCKY_BOX("red_lucky_box", new RedLuckyBox()),
     GREEN_LUCKY_BOX("green_lucky_box", new GreenLuckyBox()),

@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LuckyBall extends LuckyBox {
-    public LuckyBall() {
-        super(new LuckyBallFactory());
+public class PokeBallLuckyBox extends LuckyBox {
+    public PokeBallLuckyBox() {
+        super(new ItemFactory());
     }
 
-    private static class LuckyBallFactory implements SimpleFactory<Item> {
+    private static class ItemFactory implements SimpleFactory<Item> {
         @Override
         public Item create() {
             List<Item> random = getPokeBallItems();
