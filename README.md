@@ -184,12 +184,11 @@ datapacks/
     ├── pack.mcmeta
     └── data/
         └── wanteditems/
-        │   └── lucky_box/
-        │       ├── red_lucky_box.json
-        │       ├── green_lucky_box.json
-        │       └── blue_lucky_box.json
-        │       
-        └── wanteditems/
+            ├── lucky_box/
+            │   ├── red_lucky_box.json
+            │   ├── green_lucky_box.json
+            │   └── blue_lucky_box.json
+            │
             └── lucky_egg/
                 ├── red_lucky_egg.json
                 ├── green_lucky_egg.json
