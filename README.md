@@ -143,7 +143,7 @@ Gold Bottle Cap maximizes all IVs.
 
 ### Copper Bottle Cap
 
-Copper Bottle Cap zeroes specified Pokémon IV.
+Copper Bottle Cap zeroes all IVs.
 
 ## Swappers
 
