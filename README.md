@@ -17,7 +17,6 @@ Few items will be removed or changed in the future. Be sure to provide migration
 
 ### To be Removed
 
-- Cobblemon Lucky Box
 - Shiny Gold Lucky Box
 - Shiny Silver Lucky Box
 - Gold Candy Lucky Box
@@ -77,25 +76,25 @@ Lucky Box items grant players random items. Following Lucky Box items can be cus
 - Green Lucky Box
 - Blue Lucky Box
 
-## Poke Ball Lucky Box
+### Cobblemon Lucky Box
+
+Cobblemon Lucky Box gives random Cobblemon items except,
+- Cobblemon Model items
+
+### Poke Ball Lucky Box
 
 Gives random Poke Ball item, including Master Ball and Origin Ball.
 
-## Berry Lucky Box
+### Berry Lucky Box
 
 Gives random Berry item.
 
-## Exp. Candy Lucky Box
+### Exp. Candy Lucky Box
 
 Gives random Exp. Candy item.
 
 <details>
 <summary>To be Removed in 1.1.8</summary>
-
-### Cobblemon Lucky Box
-
-Cobblemon Lucky Box gives random Cobblemon items except, 
-- Cobblemon Model items
 
 ### Gold Candy Lucky Box
 

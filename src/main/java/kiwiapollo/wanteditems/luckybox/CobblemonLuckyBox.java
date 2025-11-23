@@ -1,8 +1,7 @@
-package kiwiapollo.wanteditems.legacy;
+package kiwiapollo.wanteditems.luckybox;
 
 import com.cobblemon.mod.common.CobblemonItems;
 import kiwiapollo.wanteditems.common.SimpleFactory;
-import kiwiapollo.wanteditems.luckybox.LuckyBox;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;
@@ -11,10 +10,10 @@ import java.util.List;
 
 public class CobblemonLuckyBox extends LuckyBox {
     public CobblemonLuckyBox() {
-        super(new CobblemonItemFactory());
+        super(new ItemFactory());
     }
 
-    private static class CobblemonItemFactory implements SimpleFactory<Item> {
+    private static class ItemFactory implements SimpleFactory<Item> {
         @Override
         public Item create() {
             List<Item> random = new ArrayList<>(CobblemonItems.INSTANCE.all());
