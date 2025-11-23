@@ -77,15 +77,15 @@ Lucky Box items grant players random items. Following Lucky Box items can be cus
 - Green Lucky Box
 - Blue Lucky Box
 
-## Lucky Ball
+## Poke Ball Lucky Box
 
 Gives random Poke Ball item, including Master Ball and Origin Ball.
 
-## Lucky Berry
+## Berry Lucky Box
 
 Gives random Berry item.
 
-## Lucky Candy
+## Exp. Candy Lucky Box
 
 Gives random Exp. Candy item.
 
