@@ -3,17 +3,23 @@
 
     "item.wanteditems.gender_swapper": "Alter-Sexe",
     "item.wanteditems.shiny_swapper": "Alter-Chroma",
+    "item.wanteditems.caught_ball_swapper": "Alter-Poké Ball",
 
     "item.wanteditems.ev_randomizer": "Aléa-EV",
     "item.wanteditems.iv_randomizer": "Aléa-IV",
     "item.wanteditems.level_randomizer": "Aléa-Niv",
 
-    "item.wanteditems.silver_lucky_egg": "Œuf Mystère",
-    "item.wanteditems.shiny_silver_lucky_egg": "Œuf Mystère Chroma",
-    "item.wanteditems.gold_lucky_egg": "Œuf Mystère Doré",
-    "item.wanteditems.shiny_gold_lucky_egg": "Œuf Mystère Doré Chroma",
-    "item.wanteditems.cobblemon_lucky_box": "Boîte Mystère Cobblemon",
-    "item.wanteditems.myths_and_legends_lucky_box": "Boîte Mystère Mythes et Légendes",
+    "item.wanteditems.red_lucky_egg": "Œuf Mystère Rouge",
+    "item.wanteditems.green_lucky_egg": "Œuf Mystère Vert",
+    "item.wanteditems.blue_lucky_egg": "Œuf Mystère Bleu",
+
+    "item.wanteditems.red_lucky_box": "Boîte Mystère Rouge",
+    "item.wanteditems.green_lucky_box": "Boîte Mystère Verte",
+    "item.wanteditems.blue_lucky_box": "Boîte Mystère Bleue",
+
+    "item.wanteditems.poke_ball_lucky_box": "Boîte Mystère Poké Ball",
+    "item.wanteditems.berry_lucky_box": "Boîte Mystère Baie",
+    "item.wanteditems.exp_candy_lucky_box": "Boîte Mystère Bonbon Exp.",
 
     "item.wanteditems.bottle_cap": "Capsule d'Argent",
     "item.wanteditems.bottle_cap_hp": "Capsule d'Argent (PV)",
@@ -26,8 +32,26 @@
     "item.wanteditems.copper_bottle_cap": "Capsule de Bronze",
 
     "item.wanteditems.ditto_residue": "Résidu de Ditto",
+    "item.wanteditems.move_activator": "Déclencheur de Capacité",
 
     "item.wanteditems.error.has_maximum_stats": "%s possède déjà ses stats au maximum.",
     "item.wanteditems.error.has_zero_stats": "%s possède déjà ses stats au minimum.",
-    "item.wanteditems.error.is_genderless": "%s est assexué."
+    "item.wanteditems.error.is_genderless": "%s est assexué.",
+    "item.wanteditems.not_enough_pp": "PP insuffisants",
+    "item.wanteditems.move_has_no_effect": "Cette capacité n’a aucun effet",
+    "item.wanteditems.player_poisoned_target": "%s a empoisonné %s",
+    "item.wanteditems.player_blinded_target": "%s a rendu %s aveugle",
+
+    "item.wanteditems.silver_lucky_egg": "Œuf Mystère",
+    "item.wanteditems.shiny_silver_lucky_egg": "Œuf Mystère Chroma",
+    "item.wanteditems.gold_lucky_egg": "Œuf Mystère Doré",
+    "item.wanteditems.shiny_gold_lucky_egg": "Œuf Mystère Doré Chroma",
+
+    "item.wanteditems.cobblemon_lucky_box": "Boîte Mystère Cobblemon",
+    "item.wanteditems.myths_and_legends_lucky_box": "Boîte Mystère Mythes et Légendes",
+    "item.wanteditems.gold_candy_lucky_box": "Boîte Mystère Bonbon d'Or",
+    "item.wanteditems.silver_candy_lucky_box": "Boîte Mystère Bonbon d'Argent",
+    "item.wanteditems.gold_poke_ball_lucky_box": "Boîte Mystère Poké Ball d'Or",
+    "item.wanteditems.silver_poke_ball_lucky_box": "Boîte Mystère Poké Ball d'Argent",
+    "item.wanteditems.ancient_poke_ball_lucky_box": "Boîte Mystère Poké Ball Ancienne"
 }
