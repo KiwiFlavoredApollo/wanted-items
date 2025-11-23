@@ -82,26 +82,6 @@ public class MoveActivator extends Item implements PokemonAndMoveSelectingItem {
     }
 
     @Override
-    public boolean canUseOnPokemon(@NotNull Pokemon pokemon) {
-        return true;
-    }
-
-    @Override
-    public boolean canUseOnBattlePokemon(@NotNull BattlePokemon pokemon) {
-        return false;
-    }
-
-    @Override
-    public boolean canUseOnMove(@NotNull Pokemon pokemon, @NotNull Move move) {
-        return true;
-    }
-
-    @Override
-    public boolean canUseOnMove(@NotNull Move move) {
-        return true;
-    }
-
-    @Override
     public @Nullable TypedActionResult<ItemStack> interactWithSpecific(@NotNull ServerPlayerEntity player, @NotNull ItemStack itemStack, @NotNull Pokemon pokemon) {
         return PokemonAndMoveSelectingItem.DefaultImpls.interactWithSpecific(this, player, itemStack, pokemon);
     }
@@ -121,5 +101,10 @@ public class MoveActivator extends Item implements PokemonAndMoveSelectingItem {
     public @Nullable TypedActionResult<ItemStack> interactGeneralBattle(@NotNull ServerPlayerEntity player, @NotNull ItemStack itemStack, @NotNull BattleActor battleActor) {
         return PokemonAndMoveSelectingItem.DefaultImpls.interactGeneralBattle(this, player, itemStack, battleActor);
 
+    }
+
+    @Override
+    public boolean canUseOnMove(@NotNull ItemStack itemStack, @NotNull Move move) {
+        return false;
     }
 }

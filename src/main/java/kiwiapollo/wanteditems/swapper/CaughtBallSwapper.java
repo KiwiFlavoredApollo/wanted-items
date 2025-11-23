@@ -66,7 +66,7 @@ public class CaughtBallSwapper extends Item implements PokemonSelectingItem {
             pokemon.removeHeldItem();
         }
 
-        player.playSound(CobblemonSounds.MEDICINE_PILLS_USE, SoundCategory.PLAYERS, 1F, 1F);
+        player.playSound(CobblemonSounds.MEDICINE_PILLS_USE);
         return TypedActionResult.success(itemStack);
     }
 
@@ -87,16 +87,6 @@ public class CaughtBallSwapper extends Item implements PokemonSelectingItem {
     @Override
     public void applyToBattlePokemon(@NotNull ServerPlayerEntity serverPlayerEntity, @NotNull ItemStack itemStack, @NotNull BattlePokemon battlePokemon) {
 
-    }
-
-    @Override
-    public boolean canUseOnPokemon(@NotNull Pokemon pokemon) {
-        return true;
-    }
-
-    @Override
-    public boolean canUseOnBattlePokemon(@NotNull BattlePokemon battlePokemon) {
-        return false;
     }
 
     @Override
