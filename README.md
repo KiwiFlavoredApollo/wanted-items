@@ -24,9 +24,6 @@ Few items will be removed or changed in the future. Be sure to provide migration
 - Gold Poke Ball Lucky Box
 - Silver Poke Ball Lucky Box
 - Ancient Poke Ball Lucky Box
-
-### To be Changed
-
 - Gold Lucky Egg
 - Silver Lucky Egg
 
@@ -51,7 +48,7 @@ Needs to be implemented
 Needs to be implemented
 
 <details>
-<summary>To be Changed in 1.1.8</summary>
+<summary>To be Removed in 1.1.8</summary>
 
 ### Gold Lucky Egg
 
