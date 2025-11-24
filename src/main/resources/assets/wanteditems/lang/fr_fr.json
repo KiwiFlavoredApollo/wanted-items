@@ -37,7 +37,7 @@
 
     "item.wanteditems.error.has_maximum_stats": "%s possède déjà ses stats au maximum.",
     "item.wanteditems.error.has_zero_stats": "%s possède déjà ses stats au minimum.",
-    "item.wanteditems.error.is_genderless": "%s est assexué.",
+    "item.wanteditems.error.cannot_swap_gender": "%s ne peut pas changer de sexe",
     "item.wanteditems.not_enough_pp": "PP insuffisants",
     "item.wanteditems.move_has_no_effect": "Cette capacité n’a aucun effet",
     "item.wanteditems.player_poisoned_target": "%s a empoisonné %s",

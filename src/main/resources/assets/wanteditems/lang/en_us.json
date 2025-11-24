@@ -37,7 +37,7 @@
 
     "item.wanteditems.error.has_maximum_stats": "%s already has the maximum stats.",
     "item.wanteditems.error.has_zero_stats": "%s already has zero stats.",
-    "item.wanteditems.error.is_genderless": "%s is genderless.",
+    "item.wanteditems.error.cannot_swap_gender": "% cannot swap gender.",
     "item.wanteditems.not_enough_pp": "Not enough PP",
     "item.wanteditems.move_has_no_effect": "This move has no effect",
     "item.wanteditems.player_poisoned_target": "%s poisoned %s.",

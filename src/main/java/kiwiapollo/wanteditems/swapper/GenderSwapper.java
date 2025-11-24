@@ -16,10 +16,13 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class GenderSwapper extends Item implements PokemonSelectingItem {
     public GenderSwapper() {
@@ -49,34 +52,39 @@ public class GenderSwapper extends Item implements PokemonSelectingItem {
 
     @Override
     public @Nullable TypedActionResult<ItemStack> applyToPokemon(@NotNull ServerPlayerEntity player, @NotNull ItemStack itemStack, @NotNull Pokemon pokemon) {
-        switch (pokemon.getGender()) {
-            case GENDERLESS -> {
-                player.playSound(SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.PLAYERS, 1F, 1F);
-                player.sendMessage(Text.translatable("item.wanteditems.error.is_genderless", pokemon.getSpecies().getTranslatedName()).formatted(Formatting.RED));
-                return TypedActionResult.pass(itemStack);
+        try {
+            switch (pokemon.getGender()) {
+                case FEMALE -> {
+                    pokemon.setGender(Gender.MALE);
+                    if (pokemon.getGender() != Gender.MALE) {
+                        throw new IllegalStateException();
+                    }
+                }
+
+                case MALE -> {
+                    pokemon.setGender(Gender.FEMALE);
+                    if (pokemon.getGender() != Gender.FEMALE) {
+                        throw new IllegalStateException();
+                    }
+                }
+
+                case GENDERLESS -> {
+                    throw new IllegalStateException();
+                }
             }
-            case FEMALE -> {
-                setMale(pokemon);
+
+            if (!player.isCreative()) {
+                itemStack.decrement(1);
             }
-            case MALE -> {
-                setFemale(pokemon);
-            }
+
+            player.playSound(CobblemonSounds.MEDICINE_PILLS_USE, SoundCategory.PLAYERS, 1F, 1F);
+            return TypedActionResult.success(itemStack);
+
+        } catch (IllegalStateException e) {
+            player.playSound(SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.PLAYERS, 1F, 1F);
+            player.sendMessage(Text.translatable("item.wanteditems.error.cannot_swap_gender", pokemon.getSpecies().getTranslatedName()).formatted(Formatting.RED));
+            return TypedActionResult.pass(itemStack);
         }
-
-        if (!player.isCreative()) {
-            itemStack.decrement(1);
-        }
-
-        player.playSound(CobblemonSounds.MEDICINE_PILLS_USE, SoundCategory.PLAYERS, 1F, 1F);
-        return TypedActionResult.success(itemStack);
-    }
-
-    private void setMale(Pokemon pokemon) {
-        pokemon.setGender(Gender.MALE);
-    }
-
-    private void setFemale(Pokemon pokemon) {
-        pokemon.setGender(Gender.FEMALE);
     }
 
     @Override
