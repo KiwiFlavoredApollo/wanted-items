@@ -1,15 +1,10 @@
 package kiwiapollo.wanteditems;
 
+import kiwiapollo.wanteditems.common.ResourceReloadListenerStorage;
 import kiwiapollo.wanteditems.legacy.LegacyItem;
-import kiwiapollo.wanteditems.luckybox.BlueLuckyBox;
-import kiwiapollo.wanteditems.luckybox.GreenLuckyBox;
 import kiwiapollo.wanteditems.luckybox.LuckyBoxItem;
-import kiwiapollo.wanteditems.luckybox.RedLuckyBox;
-import kiwiapollo.wanteditems.luckyegg.BlueLuckyEgg;
-import kiwiapollo.wanteditems.luckyegg.GreenLuckyEgg;
-import kiwiapollo.wanteditems.luckyegg.RedLuckyEgg;
+import kiwiapollo.wanteditems.luckyegg.*;
 import kiwiapollo.wanteditems.misc.MiscItem;
-import kiwiapollo.wanteditems.luckyegg.LuckyEggItem;
 import kiwiapollo.wanteditems.randomizer.RandomizerItem;
 import kiwiapollo.wanteditems.bottlecap.BottleCapItem;
 import kiwiapollo.wanteditems.swapper.SwapperItem;
@@ -50,13 +45,6 @@ public class WantedItems implements ModInitializer {
 		addRandomizerItems();
 		addMiscItems();
 		addLegacyItems();
-
-		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(RedLuckyEgg.FACTORY);
-		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(GreenLuckyEgg.FACTORY);
-		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(BlueLuckyEgg.FACTORY);
-		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(RedLuckyBox.FACTORY);
-		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(GreenLuckyBox.FACTORY);
-		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(BlueLuckyBox.FACTORY);
 	}
 
 	private void addItemGroup() {
@@ -64,19 +52,21 @@ public class WantedItems implements ModInitializer {
 	}
 
 	private void addLuckyBoxItems() {
-		addCobblemonLuckyBoxItems();
-	}
+        Arrays.stream(LuckyBoxItem.values()).forEach(item -> {
+            Registry.register(Registries.ITEM, item.getIdentifier(), item.getItem());
+        });
 
-	private void addCobblemonLuckyBoxItems() {
-		Arrays.stream(LuckyBoxItem.values()).forEach(item -> {
-			Registry.register(Registries.ITEM, item.getIdentifier(), item.getItem());
-		});
+        ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_REGISTRY_KEY).register(group -> {
+            Arrays.stream(LuckyBoxItem.values()).forEach(item -> {
+                group.add(item.getItem());
+            });
+        });
 
-		ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_REGISTRY_KEY).register(group -> {
-			Arrays.stream(LuckyBoxItem.values()).forEach(item -> {
-				group.add(item.getItem());
-			});
-		});
+        Arrays.stream(LuckyBoxItem.values()).forEach(item -> {
+            if (item.getItem() instanceof ResourceReloadListenerStorage storage) {
+                ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(storage.get());
+            }
+        });
 	}
 
 	private void addLuckyEggItems() {
@@ -89,6 +79,12 @@ public class WantedItems implements ModInitializer {
 				group.add(item.getItem());
 			});
 		});
+
+        Arrays.stream(LuckyEggItem.values()).forEach(item -> {
+            if (item.getItem() instanceof ResourceReloadListenerStorage storage) {
+                ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(storage.get());
+            }
+        });
 	}
 
 	private void addBottleCapItems() {

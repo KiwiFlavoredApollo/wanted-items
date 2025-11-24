@@ -1,15 +1,17 @@
 package kiwiapollo.wanteditems.luckybox;
 
-public class BlueLuckyBox extends LuckyBox {
-    public static final ItemFactory FACTORY = new ItemFactory();
+import kiwiapollo.wanteditems.common.ResourceReloadListenerStorage;
+import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
+
+public class BlueLuckyBox extends LuckyBox implements ResourceReloadListenerStorage {
+    private static final LuckyBox.ItemFactory FACTORY = new LuckyBox.ItemFactory("blue_lucky_box");
 
     public BlueLuckyBox() {
         super(FACTORY);
     }
 
-    public static class ItemFactory extends LuckyBox.ItemFactory {
-        public ItemFactory() {
-            super("blue_lucky_box");
-        }
+    @Override
+    public IdentifiableResourceReloadListener get() {
+        return FACTORY;
     }
 }

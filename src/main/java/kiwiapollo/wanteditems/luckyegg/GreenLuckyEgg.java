@@ -1,15 +1,17 @@
 package kiwiapollo.wanteditems.luckyegg;
 
-public class GreenLuckyEgg extends LuckyEgg {
-    public static final PokemonFactory FACTORY = new PokemonFactory();
+import kiwiapollo.wanteditems.common.ResourceReloadListenerStorage;
+import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
+
+public class GreenLuckyEgg extends LuckyEgg implements ResourceReloadListenerStorage {
+    private static final LuckyEgg.PokemonFactory FACTORY = new LuckyEgg.PokemonFactory("green_lucky_egg");
 
     public GreenLuckyEgg() {
         super(FACTORY);
     }
 
-    public static class PokemonFactory extends LuckyEgg.PokemonFactory {
-        public PokemonFactory() {
-            super("green_lucky_egg");
-        }
+    @Override
+    public IdentifiableResourceReloadListener get() {
+        return FACTORY;
     }
 }
