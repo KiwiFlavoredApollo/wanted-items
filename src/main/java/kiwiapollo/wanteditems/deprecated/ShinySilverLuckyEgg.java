@@ -1,4 +1,4 @@
-package kiwiapollo.wanteditems.legacy;
+package kiwiapollo.wanteditems.deprecated;
 
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
 import com.cobblemon.mod.common.pokemon.Pokemon;
@@ -10,22 +10,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SilverLuckyEgg extends LuckyEgg {
-    public SilverLuckyEgg() {
-        super(new RandomPokemonFactory(
+public class ShinySilverLuckyEgg extends LuckyEgg {
+    public ShinySilverLuckyEgg() {
+        super(new RandomShinyPokemonFactory(
                 List.of(),
                 List.of("legendary", "mythical", "paradox", "ultra_beast", "mega")
         ));
     }
 
-    private static class RandomPokemonFactory implements SimpleFactory<Pokemon> {
+    private static class RandomShinyPokemonFactory implements SimpleFactory<Pokemon> {
         private static final int LEVEL = 10;
         private static final List<String> FORBIDDEN_SPECIES = List.of();
 
         private final List<String> required;
         private final List<String> forbidden;
 
-        public RandomPokemonFactory(List<String> required, List<String> forbidden) {
+        public RandomShinyPokemonFactory(List<String> required, List<String> forbidden) {
             this.required = required;
             this.forbidden = forbidden;
         }
@@ -40,7 +40,10 @@ public class SilverLuckyEgg extends LuckyEgg {
 
             Collections.shuffle(random);
 
-            return random.get(0).create(LEVEL);
+            Pokemon pokemon = random.get(0).create(LEVEL);
+            pokemon.setShiny(true);
+
+            return pokemon;
         }
     }
 }

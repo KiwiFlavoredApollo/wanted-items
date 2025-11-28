@@ -1,7 +1,7 @@
 package kiwiapollo.wanteditems;
 
 import kiwiapollo.wanteditems.common.ResourceReloadListenerStorage;
-import kiwiapollo.wanteditems.legacy.LegacyItem;
+import kiwiapollo.wanteditems.deprecated.DeprecatedItem;
 import kiwiapollo.wanteditems.luckybox.LuckyBoxItem;
 import kiwiapollo.wanteditems.luckyegg.*;
 import kiwiapollo.wanteditems.misc.MiscItem;
@@ -44,7 +44,7 @@ public class WantedItems implements ModInitializer {
 		addSwapperItems();
 		addRandomizerItems();
 		addMiscItems();
-		addLegacyItems();
+		addDeprecatedItems();
 	}
 
 	private void addItemGroup() {
@@ -135,8 +135,8 @@ public class WantedItems implements ModInitializer {
 		});
 	}
 
-	private void addLegacyItems() {
-		Arrays.stream(LegacyItem.values()).forEach(item -> {
+	private void addDeprecatedItems() {
+		Arrays.stream(DeprecatedItem.values()).forEach(item -> {
 			Registry.register(Registries.ITEM, item.getIdentifier(), item.getItem());
 		});
 	}

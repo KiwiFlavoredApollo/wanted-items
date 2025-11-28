@@ -1,4 +1,4 @@
-package kiwiapollo.wanteditems.legacy;
+package kiwiapollo.wanteditems.deprecated;
 
 import com.cobblemon.mod.common.CobblemonItems;
 import com.cobblemon.mod.common.item.interactive.CandyItem;

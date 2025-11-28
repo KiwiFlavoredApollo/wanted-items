@@ -1,4 +1,4 @@
-package kiwiapollo.wanteditems.legacy;
+package kiwiapollo.wanteditems.deprecated;
 
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
 import com.cobblemon.mod.common.pokemon.Pokemon;

@@ -1,10 +1,10 @@
-package kiwiapollo.wanteditems.legacy;
+package kiwiapollo.wanteditems.deprecated;
 
 import kiwiapollo.wanteditems.WantedItems;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
-public enum LegacyItem {
+public enum DeprecatedItem {
     GOLD_CANDY_LUCKY_BOX("gold_candy_lucky_box", new GoldCandyLuckyBox()),
     SILVER_CANDY_LUCKY_BOX("silver_candy_lucky_box", new SilverCandyLuckyBox()),
     GOLD_POKE_BALL_LUCKY_BOX("gold_poke_ball_lucky_box", new GoldPokeBallLuckyBox()),
@@ -19,7 +19,7 @@ public enum LegacyItem {
     private final Identifier identifier;
     private final Item item;
 
-    LegacyItem(String path, Item item) {
+    DeprecatedItem(String path, Item item) {
         this.identifier = Identifier.of(WantedItems.MOD_ID, path);
         this.item = item;
     }
