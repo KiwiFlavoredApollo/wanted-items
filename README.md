@@ -19,8 +19,8 @@ Few items will be removed or changed in the future. Be sure to provide migration
 
 - Gold Lucky Egg
 - Silver Lucky Egg
-- Shiny Gold Lucky Box
-- Shiny Silver Lucky Box
+- Shiny Gold Lucky Egg
+- Shiny Silver Lucky Egg
 - Gold Candy Lucky Box
 - Silver Candy Lucky Box
 - Gold Poke Ball Lucky Box
