@@ -2,25 +2,32 @@ package kiwiapollo.wanteditems.misc;
 
 import kiwiapollo.wanteditems.WantedItems;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public enum MiscItem {
-    DITTO_RESIDUE("ditto_residue", new DittoResidue()),
-    MOVE_ACTIVATOR("move_activator", new MoveActivator());
+import java.util.ArrayList;
+import java.util.List;
 
-    private final Identifier identifier;
-    private final Item item;
+public class MiscItem {
+    private static final List<Item> all = new ArrayList<>();
 
-    MiscItem(String path, Item item) {
-        this.identifier = Identifier.of(WantedItems.MOD_ID, path);
-        this.item = item;
+    public static final Item DITTO_RESIDUE = register("ditto_residue", new DittoResidue());
+    public static final Item MOVE_ACTIVATOR = register("move_activator", new MoveActivator());
+
+    public static void initialize() {
+
     }
 
-    public Identifier getIdentifier() {
-        return identifier;
+    private static Item register(String name, Item item) {
+        Identifier identifier = Identifier.of(WantedItems.MOD_ID, name);
+        Item i = Registry.register(Registries.ITEM, identifier, item);
+        all.add(i);
+
+        return i;
     }
 
-    public Item getItem() {
-        return item;
+    public static List<Item> getAll() {
+        return new ArrayList<>(all);
     }
 }

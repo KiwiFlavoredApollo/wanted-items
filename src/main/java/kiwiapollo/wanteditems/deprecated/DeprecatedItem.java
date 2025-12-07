@@ -2,33 +2,40 @@ package kiwiapollo.wanteditems.deprecated;
 
 import kiwiapollo.wanteditems.WantedItems;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public enum DeprecatedItem {
-    GOLD_CANDY_LUCKY_BOX("gold_candy_lucky_box", new GoldCandyLuckyBox()),
-    SILVER_CANDY_LUCKY_BOX("silver_candy_lucky_box", new SilverCandyLuckyBox()),
-    GOLD_POKE_BALL_LUCKY_BOX("gold_poke_ball_lucky_box", new GoldPokeBallLuckyBox()),
-    SILVER_POKE_BALL_LUCKY_BOX("silver_poke_ball_lucky_box", new SilverPokeBallLuckyBox()),
-    ANCIENT_POKE_BALL_LUCKY_BOX("ancient_poke_ball_lucky_box", new AncientPokeBallLuckyBox()),
+import java.util.ArrayList;
+import java.util.List;
 
-    GOLD_LUCKY_EGG("gold_lucky_egg", new GoldLuckyEgg()),
-    SHINY_GOLD_LUCKY_EGG("shiny_gold_lucky_egg", new ShinyGoldLuckyEgg()),
-    SILVER_LUCKY_EGG("silver_lucky_egg", new SilverLuckyEgg()),
-    SHINY_SILVER_LUCKY_EGG("shiny_silver_lucky_egg", new ShinySilverLuckyEgg());
+public class DeprecatedItem {
+    private static final List<Item> all = new ArrayList<>();
+    
+    public static final Item GOLD_CANDY_LUCKY_BOX = register("gold_candy_lucky_box", new GoldCandyLuckyBox());
+    public static final Item SILVER_CANDY_LUCKY_BOX = register("silver_candy_lucky_box", new SilverCandyLuckyBox());
+    public static final Item GOLD_POKE_BALL_LUCKY_BOX = register("gold_poke_ball_lucky_box", new GoldPokeBallLuckyBox());
+    public static final Item SILVER_POKE_BALL_LUCKY_BOX = register("silver_poke_ball_lucky_box", new SilverPokeBallLuckyBox());
+    public static final Item ANCIENT_POKE_BALL_LUCKY_BOX = register("ancient_poke_ball_lucky_box", new AncientPokeBallLuckyBox());
 
-    private final Identifier identifier;
-    private final Item item;
+    public static final Item GOLD_LUCKY_EGG = register("gold_lucky_egg", new GoldLuckyEgg());
+    public static final Item SHINY_GOLD_LUCKY_EGG = register("shiny_gold_lucky_egg", new ShinyGoldLuckyEgg());
+    public static final Item SILVER_LUCKY_EGG = register("silver_lucky_egg", new SilverLuckyEgg());
+    public static final Item SHINY_SILVER_LUCKY_EGG = register("shiny_silver_lucky_egg", new ShinySilverLuckyEgg());
 
-    DeprecatedItem(String path, Item item) {
-        this.identifier = Identifier.of(WantedItems.MOD_ID, path);
-        this.item = item;
+    public static void initialize() {
+
     }
 
-    public Item getItem() {
-        return item;
+    private static Item register(String name, Item item) {
+        Identifier identifier = Identifier.of(WantedItems.MOD_ID, name);
+        Item i = Registry.register(Registries.ITEM, identifier, item);
+        all.add(i);
+
+        return i;
     }
 
-    public Identifier getIdentifier() {
-        return identifier;
+    public static List<Item> getAll() {
+        return new ArrayList<>(all);
     }
 }

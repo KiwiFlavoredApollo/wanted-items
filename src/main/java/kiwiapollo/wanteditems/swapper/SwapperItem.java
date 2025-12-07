@@ -2,26 +2,33 @@ package kiwiapollo.wanteditems.swapper;
 
 import kiwiapollo.wanteditems.WantedItems;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public enum SwapperItem {
-    GENDER_SWAPPER("gender_swapper", new GenderSwapper()),
-    SHINY_SWAPPER("shiny_swapper", new ShinySwapper()),
-    CAUGHT_BALL_SWAPPER("caught_ball_swapper", new CaughtBallSwapper());
+import java.util.ArrayList;
+import java.util.List;
 
-    private final Identifier identifier;
-    private final Item item;
+public class SwapperItem {
+    private static final List<Item> all = new ArrayList<>();
+    
+    public static final Item GENDER_SWAPPER = register("gender_swapper", new GenderSwapper());
+    public static final Item SHINY_SWAPPER = register("shiny_swapper", new ShinySwapper());
+    public static final Item CAUGHT_BALL_SWAPPER = register("caught_ball_swapper", new CaughtBallSwapper());
 
-    SwapperItem(String path, Item item) {
-        this.identifier = Identifier.of(WantedItems.MOD_ID, path);
-        this.item = item;
+    public static void initialize() {
+
     }
 
-    public Item getItem() {
-        return item;
+    private static Item register(String name, Item item) {
+        Identifier identifier = Identifier.of(WantedItems.MOD_ID, name);
+        Item i = Registry.register(Registries.ITEM, identifier, item);
+        all.add(i);
+
+        return i;
     }
 
-    public Identifier getIdentifier() {
-        return identifier;
+    public static List<Item> getAll() {
+        return new ArrayList<>(all);
     }
 }

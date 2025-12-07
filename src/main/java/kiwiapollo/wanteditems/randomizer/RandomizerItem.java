@@ -2,26 +2,33 @@ package kiwiapollo.wanteditems.randomizer;
 
 import kiwiapollo.wanteditems.WantedItems;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public enum RandomizerItem {
-    EV_RANDOMIZER("ev_randomizer", new EVRandomizer()),
-    IV_RANDOMIZER("iv_randomizer", new IVRandomizer()),
-    LEVEL_RANDOMIZER("level_randomizer", new LevelRandomizer());
+import java.util.ArrayList;
+import java.util.List;
 
-    private final Identifier identifier;
-    private final Item item;
+public class RandomizerItem {
+    private static final List<Item> all = new ArrayList<>();
+    
+    public static final Item EV_RANDOMIZER = register("ev_randomizer", new EVRandomizer());
+    public static final Item IV_RANDOMIZER = register("iv_randomizer", new IVRandomizer());
+    public static final Item LEVEL_RANDOMIZER = register("level_randomizer", new LevelRandomizer());
 
-    RandomizerItem(String path, Item item) {
-        this.identifier = Identifier.of(WantedItems.MOD_ID, path);
-        this.item = item;
+    public static void initialize() {
+
     }
 
-    public Item getItem() {
-        return item;
+    private static Item register(String name, Item item) {
+        Identifier identifier = Identifier.of(WantedItems.MOD_ID, name);
+        Item i = Registry.register(Registries.ITEM, identifier, item);
+        all.add(i);
+
+        return i;
     }
 
-    public Identifier getIdentifier() {
-        return identifier;
+    public static List<Item> getAll() {
+        return new ArrayList<>(all);
     }
 }

@@ -2,26 +2,33 @@ package kiwiapollo.wanteditems.luckyegg;
 
 import kiwiapollo.wanteditems.WantedItems;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public enum LuckyEggItem {
-    RED_LUCKY_EGG("red_lucky_egg", new RedLuckyEgg()),
-    GREEN_LUCKY_EGG("green_lucky_egg", new GreenLuckyEgg()),
-    BLUE_LUCKY_EGG("blue_lucky_egg", new BlueLuckyEgg());
+import java.util.ArrayList;
+import java.util.List;
 
-    private final Identifier identifier;
-    private final Item item;
+public class LuckyEggItem {
+    private static final List<Item> all = new ArrayList<>();
 
-    LuckyEggItem(String path, Item item) {
-        this.identifier = Identifier.of(WantedItems.MOD_ID, path);
-        this.item = item;
+    public static final Item RED_LUCKY_EGG = register("red_lucky_egg", new RedLuckyEgg());
+    public static final Item GREEN_LUCKY_EGG = register("green_lucky_egg", new GreenLuckyEgg());
+    public static final Item BLUE_LUCKY_EGG = register("blue_lucky_egg", new BlueLuckyEgg());
+
+    public static void initialize() {
+
     }
 
-    public Item getItem() {
-        return item;
+    private static Item register(String name, Item item) {
+        Identifier identifier = Identifier.of(WantedItems.MOD_ID, name);
+        Item i = Registry.register(Registries.ITEM, identifier, item);
+        all.add(i);
+
+        return i;
     }
 
-    public Identifier getIdentifier() {
-        return identifier;
+    public static List<Item> getAll() {
+        return new ArrayList<>(all);
     }
 }

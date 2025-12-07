@@ -2,31 +2,38 @@ package kiwiapollo.wanteditems.luckybox;
 
 import kiwiapollo.wanteditems.WantedItems;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public enum LuckyBoxItem {
-    COBBLEMON_LUCKY_BOX("cobblemon_lucky_box", new CobblemonLuckyBox()),
-    POKE_BALL_LUCKY_BOX("poke_ball_lucky_box", new PokeBallLuckyBox()),
-    BERRY_LUCKY_BOX("berry_lucky_box", new BerryLuckyBox()),
-    EXP_CANDY_LUCKY_BOX("exp_candy_lucky_box", new ExpCandyLuckyBox()),
+import java.util.ArrayList;
+import java.util.List;
 
-    RED_LUCKY_BOX("red_lucky_box", new RedLuckyBox()),
-    GREEN_LUCKY_BOX("green_lucky_box", new GreenLuckyBox()),
-    BLUE_LUCKY_BOX("blue_lucky_box", new BlueLuckyBox());
+public class LuckyBoxItem {
+    private static final List<Item> all = new ArrayList<>();
 
-    private final Identifier identifier;
-    private final Item item;
+    public static final Item COBBLEMON_LUCKY_BOX = register("cobblemon_lucky_box", new CobblemonLuckyBox());
+    public static final Item POKE_BALL_LUCKY_BOX = register("poke_ball_lucky_box", new PokeBallLuckyBox());
+    public static final Item BERRY_LUCKY_BOX = register("berry_lucky_box", new BerryLuckyBox());
+    public static final Item EXP_CANDY_LUCKY_BOX = register("exp_candy_lucky_box", new ExpCandyLuckyBox());
 
-    LuckyBoxItem(String path, Item item) {
-        this.identifier = Identifier.of(WantedItems.MOD_ID, path);
-        this.item = item;
+    public static final Item RED_LUCKY_BOX = register("red_lucky_box", new RedLuckyBox());
+    public static final Item GREEN_LUCKY_BOX = register("green_lucky_box", new GreenLuckyBox());
+    public static final Item BLUE_LUCKY_BOX = register("blue_lucky_box", new BlueLuckyBox());
+
+    public static void initialize() {
+
     }
 
-    public Item getItem() {
-        return item;
+    private static Item register(String name, Item item) {
+        Identifier identifier = Identifier.of(WantedItems.MOD_ID, name);
+        Item i = Registry.register(Registries.ITEM, identifier, item);
+        all.add(i);
+
+        return i;
     }
 
-    public Identifier getIdentifier() {
-        return identifier;
+    public static List<Item> getAll() {
+        return new ArrayList<>(all);
     }
 }
