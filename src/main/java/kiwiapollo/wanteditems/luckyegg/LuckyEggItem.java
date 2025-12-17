@@ -15,6 +15,7 @@ public class LuckyEggItem {
     public static final Item RED_LUCKY_EGG = register("red_lucky_egg", new RedLuckyEgg());
     public static final Item GREEN_LUCKY_EGG = register("green_lucky_egg", new GreenLuckyEgg());
     public static final Item BLUE_LUCKY_EGG = register("blue_lucky_egg", new BlueLuckyEgg());
+    public static final Item SHINY_LUCKY_EGG = register("shiny_lucky_egg", new ShinyLuckyEgg());
 
     public static void initialize() {
 
