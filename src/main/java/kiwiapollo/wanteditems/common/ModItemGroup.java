@@ -2,7 +2,6 @@ package kiwiapollo.wanteditems.common;
 
 import kiwiapollo.wanteditems.WantedItems;
 import kiwiapollo.wanteditems.bottlecap.BottleCapItem;
-import kiwiapollo.wanteditems.deprecated.DeprecatedItem;
 import kiwiapollo.wanteditems.luckybox.LuckyBoxItem;
 import kiwiapollo.wanteditems.luckyegg.LuckyEggItem;
 import kiwiapollo.wanteditems.misc.MiscItem;

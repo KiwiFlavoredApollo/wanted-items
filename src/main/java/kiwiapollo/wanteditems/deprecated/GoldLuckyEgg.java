@@ -3,8 +3,8 @@ package kiwiapollo.wanteditems.deprecated;
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.Species;
-import kiwiapollo.wanteditems.common.SimpleFactory;
 import kiwiapollo.wanteditems.luckyegg.LuckyEgg;
+import kiwiapollo.wanteditems.luckyegg.PokemonPool;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,23 +12,23 @@ import java.util.List;
 
 public class GoldLuckyEgg extends LuckyEgg {
     public GoldLuckyEgg() {
-        super(new RandomPokemonFactory(List.of(), List.of()));
+        super(new RandomPokemonPool(List.of(), List.of()));
     }
 
-    private static class RandomPokemonFactory implements SimpleFactory<Pokemon> {
+    private static class RandomPokemonPool implements PokemonPool {
         private static final int LEVEL = 10;
         private static final List<String> FORBIDDEN_SPECIES = List.of();
 
         private final List<String> required;
         private final List<String> forbidden;
 
-        public RandomPokemonFactory(List<String> required, List<String> forbidden) {
+        public RandomPokemonPool(List<String> required, List<String> forbidden) {
             this.required = required;
             this.forbidden = forbidden;
         }
 
         @Override
-        public Pokemon create() {
+        public Pokemon random() {
             List<Species> random = new ArrayList<>(PokemonSpecies.INSTANCE.getImplemented().stream()
                     .filter(species -> !FORBIDDEN_SPECIES.contains(species.getResourceIdentifier().toString()))
                     .filter(species -> required.isEmpty() || required.stream().anyMatch(label -> species.getLabels().contains(label)))

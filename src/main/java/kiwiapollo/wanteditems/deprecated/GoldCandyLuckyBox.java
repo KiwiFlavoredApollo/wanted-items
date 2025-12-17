@@ -2,7 +2,7 @@ package kiwiapollo.wanteditems.deprecated;
 
 import com.cobblemon.mod.common.CobblemonItems;
 import com.cobblemon.mod.common.item.interactive.CandyItem;
-import kiwiapollo.wanteditems.common.SimpleFactory;
+import kiwiapollo.wanteditems.luckybox.ItemPool;
 import kiwiapollo.wanteditems.luckybox.LuckyBox;
 import net.minecraft.item.Item;
 
@@ -12,12 +12,12 @@ import java.util.List;
 
 public class GoldCandyLuckyBox extends LuckyBox {
     public GoldCandyLuckyBox() {
-        super(new CandyItemFactory());
+        super(new ExpCandyItemPool());
     }
 
-    private static class CandyItemFactory implements SimpleFactory<Item> {
+    private static class ExpCandyItemPool implements ItemPool {
         @Override
-        public Item create() {
+        public Item random() {
             List<Item> random = getCandyItems();
             random.removeAll(getForbiddenItems());
             Collections.shuffle(random);

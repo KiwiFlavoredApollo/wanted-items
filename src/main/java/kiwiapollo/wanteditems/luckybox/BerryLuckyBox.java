@@ -2,7 +2,6 @@ package kiwiapollo.wanteditems.luckybox;
 
 import com.cobblemon.mod.common.CobblemonItems;
 import com.cobblemon.mod.common.item.BerryItem;
-import kiwiapollo.wanteditems.common.SimpleFactory;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;
@@ -11,12 +10,12 @@ import java.util.List;
 
 public class BerryLuckyBox extends LuckyBox {
     public BerryLuckyBox() {
-        super(new ItemFactory());
+        super(new BerryItemPool());
     }
 
-    private static class ItemFactory implements SimpleFactory<Item> {
+    private static class BerryItemPool implements ItemPool {
         @Override
-        public Item create() {
+        public Item random() {
             List<Item> random = getCandyItems();
             random.removeAll(getForbiddenItems());
             Collections.shuffle(random);

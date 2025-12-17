@@ -31,10 +31,10 @@ public class BottleCapItem {
 
     private static Item register(String name, Item item) {
         Identifier identifier = Identifier.of(WantedItems.MOD_ID, name);
-        Item i = Registry.register(Registries.ITEM, identifier, item);
-        all.add(i);
+        Item registered = Registry.register(Registries.ITEM, identifier, item);
+        all.add(registered);
         
-        return i;
+        return registered;
     }
 
     public static List<Item> getAll() {

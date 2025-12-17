@@ -1,31 +1,30 @@
 package kiwiapollo.wanteditems.luckyegg;
 
 import com.cobblemon.mod.common.pokemon.Pokemon;
-import kiwiapollo.wanteditems.common.ResourceReloadListenerStorage;
-import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.resource.ResourceType;
 
-public class ShinyLuckyEgg extends LuckyEgg implements ResourceReloadListenerStorage {
-    private static final LuckyEgg.PokemonFactory FACTORY = new ShinyPokemonFactory();
+public class ShinyLuckyEgg extends LuckyEgg {
+    private static final DataPackPokemonPool POOL = new ShinyPokemonPool();
 
     public ShinyLuckyEgg() {
-        super(FACTORY);
+        super(POOL);
     }
 
-    @Override
-    public IdentifiableResourceReloadListener get() {
-        return FACTORY;
-    }
-
-    private static class ShinyPokemonFactory extends PokemonFactory {
-        protected ShinyPokemonFactory() {
+    private static class ShinyPokemonPool extends DataPackPokemonPool {
+        protected ShinyPokemonPool() {
             super("shiny_lucky_egg");
         }
 
         @Override
-        public Pokemon create() {
-            Pokemon pokemon = super.create();
+        public Pokemon random() {
+            Pokemon pokemon = super.random();
             pokemon.setShiny(true);
             return pokemon;
         }
+    }
+
+    static {
+        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(POOL);
     }
 }

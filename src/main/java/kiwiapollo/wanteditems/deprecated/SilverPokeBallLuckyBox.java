@@ -2,7 +2,7 @@ package kiwiapollo.wanteditems.deprecated;
 
 import com.cobblemon.mod.common.CobblemonItems;
 import com.cobblemon.mod.common.item.PokeBallItem;
-import kiwiapollo.wanteditems.common.SimpleFactory;
+import kiwiapollo.wanteditems.luckybox.ItemPool;
 import kiwiapollo.wanteditems.luckybox.LuckyBox;
 import net.minecraft.item.Item;
 
@@ -12,12 +12,12 @@ import java.util.List;
 
 public class SilverPokeBallLuckyBox extends LuckyBox {
     public SilverPokeBallLuckyBox() {
-        super(new PokeBallItemFactory());
+        super(new PokeBallItemPool());
     }
 
-    private static class PokeBallItemFactory implements SimpleFactory<Item> {
+    private static class PokeBallItemPool implements ItemPool {
         @Override
-        public Item create() {
+        public Item random() {
             List<Item> random = getPokeBallItems();
             random.removeAll(getForbiddenItems());
             Collections.shuffle(random);

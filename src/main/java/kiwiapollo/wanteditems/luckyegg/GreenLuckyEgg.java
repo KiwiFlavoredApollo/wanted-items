@@ -1,17 +1,16 @@
 package kiwiapollo.wanteditems.luckyegg;
 
-import kiwiapollo.wanteditems.common.ResourceReloadListenerStorage;
-import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.resource.ResourceType;
 
-public class GreenLuckyEgg extends LuckyEgg implements ResourceReloadListenerStorage {
-    private static final LuckyEgg.PokemonFactory FACTORY = new LuckyEgg.PokemonFactory("green_lucky_egg");
+public class GreenLuckyEgg extends LuckyEgg {
+    private static final DataPackPokemonPool POOL = new DataPackPokemonPool("green_lucky_egg");
 
     public GreenLuckyEgg() {
-        super(FACTORY);
+        super(POOL);
     }
 
-    @Override
-    public IdentifiableResourceReloadListener get() {
-        return FACTORY;
+    static {
+        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(POOL);
     }
 }

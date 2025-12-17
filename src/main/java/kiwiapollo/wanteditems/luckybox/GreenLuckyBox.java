@@ -1,17 +1,16 @@
 package kiwiapollo.wanteditems.luckybox;
 
-import kiwiapollo.wanteditems.common.ResourceReloadListenerStorage;
-import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.resource.ResourceType;
 
-public class GreenLuckyBox extends LuckyBox implements ResourceReloadListenerStorage {
-    private static final LuckyBox.ItemFactory FACTORY = new LuckyBox.ItemFactory("green_lucky_box");
+public class GreenLuckyBox extends LuckyBox {
+    private static final DataPackItemPool POOL = new DataPackItemPool("green_lucky_box");
 
     public GreenLuckyBox() {
-        super(FACTORY);
+        super(POOL);
     }
 
-    @Override
-    public IdentifiableResourceReloadListener get() {
-        return FACTORY;
+    static {
+        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(POOL);
     }
 }
