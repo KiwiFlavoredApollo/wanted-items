@@ -1,7 +1,7 @@
 package kiwiapollo.wanteditems.luckybox;
 
 import com.cobblemon.mod.common.CobblemonItems;
-import com.cobblemon.mod.common.item.BerryItem;
+import com.cobblemon.mod.common.item.berry.BerryItem;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;

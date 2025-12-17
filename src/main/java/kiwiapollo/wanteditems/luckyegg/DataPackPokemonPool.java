@@ -29,7 +29,7 @@ public class DataPackPokemonPool implements PokemonPool, SimpleSynchronousResour
     @Override
     public Pokemon random() {
         List<Pokemon> pokemon = this.pokemon.stream()
-                .map(PokemonSpecies.INSTANCE::getByIdentifier)
+                .map(PokemonSpecies::getByIdentifier)
                 .filter(Objects::nonNull)
                 .map(species -> species.create(10))
                 .toList();
