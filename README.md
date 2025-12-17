@@ -34,10 +34,11 @@ Lucky Egg items grant random Pokémon to the player. Following Lucky Egg items c
 - Red Lucky Egg
 - Green Lucky Egg 
 - Blue Lucky Egg
+- Shiny Lucky Egg
 
 ### Red Lucky Egg
 
-Already implemented to give random naturally-spawning Pokémon, sourced from [Cobblemon Spawns](https://docs.google.com/spreadsheets/d/1yngaUnlZvuwktxr-TLoh1zgji-9kAlx5mWpWaD3Yb1Y/edit?gid=0#gid=0). It can be still overridden by installing data packs.
+Already implemented to give random naturally-spawning Pokémon, sourced from [Cobblemon Spawns](https://docs.google.com/spreadsheets/d/1yngaUnlZvuwktxr-TLoh1zgji-9kAlx5mWpWaD3Yb1Y/edit?gid=0#gid=0). It can be still overridden by data packs.
 
 ### Green Lucky Egg
 
@@ -46,6 +47,10 @@ Needs to be implemented
 ### Blue Lucky Egg
 
 Needs to be implemented
+
+### Shiny Lucky Egg
+
+Same as Red Lucky Egg but Pokémon are shiny
 
 <details>
 <summary>To be Removed in 1.1.8</summary>
