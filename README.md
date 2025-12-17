@@ -194,7 +194,8 @@ datapacks/
             └── lucky_egg/
                 ├── red_lucky_egg.json
                 ├── green_lucky_egg.json
-                └── blue_lucky_egg.json
+                ├── blue_lucky_egg.json
+                └── shiny_lucky_egg.json
 ```
 
 ### Lucky Box
