@@ -22,6 +22,8 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 public class GoldBottleCap extends Item implements PokemonSelectingItem {
     public GoldBottleCap() {
         super(new Item.Settings());
@@ -72,12 +74,31 @@ public class GoldBottleCap extends Item implements PokemonSelectingItem {
     }
 
     private boolean isPerfectIVs(Pokemon pokemon) {
-        return pokemon.getIvs().get(Stats.ATTACK).equals(IVs.MAX_VALUE)
-                && pokemon.getIvs().get(Stats.DEFENCE).equals(IVs.MAX_VALUE)
-                && pokemon.getIvs().get(Stats.SPECIAL_ATTACK).equals(IVs.MAX_VALUE)
-                && pokemon.getIvs().get(Stats.SPECIAL_DEFENCE).equals(IVs.MAX_VALUE)
-                && pokemon.getIvs().get(Stats.HP).equals(IVs.MAX_VALUE)
-                && pokemon.getIvs().get(Stats.SPEED).equals(IVs.MAX_VALUE);
+        if (!Objects.equals(pokemon.getIvs().get(Stats.ATTACK), IVs.MAX_VALUE)){
+            return false;
+        }
+
+        if (!Objects.equals(pokemon.getIvs().get(Stats.DEFENCE), IVs.MAX_VALUE)) {
+            return false;
+        }
+
+        if (!Objects.equals(pokemon.getIvs().get(Stats.SPECIAL_ATTACK), IVs.MAX_VALUE)) {
+            return false;
+        }
+
+        if (!Objects.equals(pokemon.getIvs().get(Stats.SPECIAL_DEFENCE), IVs.MAX_VALUE)) {
+            return false;
+        }
+
+        if (!Objects.equals(pokemon.getIvs().get(Stats.HP), IVs.MAX_VALUE)) {
+            return false;
+        }
+
+        if (!Objects.equals(pokemon.getIvs().get(Stats.SPEED), IVs.MAX_VALUE)) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override

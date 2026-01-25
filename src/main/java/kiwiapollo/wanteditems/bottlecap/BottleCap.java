@@ -64,7 +64,7 @@ public class BottleCap extends Item implements PokemonSelectingItem {
 
     @Override
     public @Nullable TypedActionResult<ItemStack> applyToPokemon(@NotNull ServerPlayerEntity player, @NotNull ItemStack itemStack, @NotNull Pokemon pokemon) {
-        if (Objects.equals(pokemon.getIvs().get(stats), IVs.MAX_VALUE)) {
+        if (isMaximumIV(pokemon, stats)) {
             player.playSound(SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.PLAYERS, 1F, 1F);
             player.sendMessage(Text.translatable("item.wanteditems.error.has_maximum_stats", pokemon.getSpecies().getTranslatedName()).formatted(Formatting.RED));
             return TypedActionResult.pass(itemStack);
@@ -78,6 +78,10 @@ public class BottleCap extends Item implements PokemonSelectingItem {
 
         player.playSound(CobblemonSounds.MEDICINE_PILLS_USE, SoundCategory.PLAYERS, 1F, 1F);
         return TypedActionResult.success(itemStack);
+    }
+
+    private boolean isMaximumIV(@NotNull Pokemon pokemon, Stats stats) {
+        return Objects.equals(pokemon.getIvs().get(stats), IVs.MAX_VALUE);
     }
 
     @Override

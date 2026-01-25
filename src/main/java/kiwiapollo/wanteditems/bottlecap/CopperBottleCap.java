@@ -21,6 +21,8 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 public class CopperBottleCap extends Item implements PokemonSelectingItem {
     public CopperBottleCap() {
         super(new Item.Settings());
@@ -71,12 +73,31 @@ public class CopperBottleCap extends Item implements PokemonSelectingItem {
     }
 
     private boolean isZeroIVs(Pokemon pokemon) {
-        return pokemon.getIvs().get(Stats.ATTACK).equals(0)
-                && pokemon.getIvs().get(Stats.DEFENCE).equals(0)
-                && pokemon.getIvs().get(Stats.SPECIAL_ATTACK).equals(0)
-                && pokemon.getIvs().get(Stats.SPECIAL_DEFENCE).equals(0)
-                && pokemon.getIvs().get(Stats.HP).equals(0)
-                && pokemon.getIvs().get(Stats.SPEED).equals(0);
+        if (!Objects.equals(pokemon.getIvs().get(Stats.ATTACK), 0)){
+            return false;
+        }
+
+        if (!Objects.equals(pokemon.getIvs().get(Stats.DEFENCE), 0)) {
+            return false;
+        }
+
+        if (!Objects.equals(pokemon.getIvs().get(Stats.SPECIAL_ATTACK), 0)) {
+            return false;
+        }
+
+        if (!Objects.equals(pokemon.getIvs().get(Stats.SPECIAL_DEFENCE), 0)) {
+            return false;
+        }
+
+        if (!Objects.equals(pokemon.getIvs().get(Stats.HP), 0)) {
+            return false;
+        }
+
+        if (!Objects.equals(pokemon.getIvs().get(Stats.SPEED), 0)) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override
