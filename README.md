@@ -11,11 +11,17 @@ This is not unique work of mine and is motivated work of Cobblemizer and Umimple
 
 ## !!! IMPORTANT !!!
 
-Myths and Legends Lucky Box item is removed due to complication of depending on closed source mod.
+### Bottle Caps
 
-Few items will be removed or changed in the future. Be sure to provide migration recipes for the users. Following items will be removed in 1.1.8
+Cobblemon 1.7.0 introduced [Hyper Training items](https://wiki.cobblemon.com/index.php/Hyper_Training) that modify hyper trained IVs. Because of this, Bottle Caps are kind of useless as Cobblemon provides official means for Hyper Training.
+
+Bottle Caps are supposed to modify hyper trained IVs, but the mod's Bottle Caps modify the actual IV of the Pokémon. For this reason I'd recommend not using the item unless you know what you are doing. Bottle Caps won't be removed as modifying the actual IV of Pokémon might be useful for some cases.
+
+I have considered "fixing" the Bottle Cap to modify hyper trained IVs, but I don't see any point in doing so as Cobblemon provides Hyper Training items.
 
 ### To be Removed
+
+Few items will be removed or changed in the future. Be sure to provide migration recipes for the users. Following items will be removed in 1.1.8
 
 - Gold Lucky Egg
 - Silver Lucky Egg
